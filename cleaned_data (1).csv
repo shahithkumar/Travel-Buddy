@@ -1,0 +1,181 @@
+Destination Type,Name,Gender,Contact No.,Destination,Budget_y,Travel Time_y,Duration_y,Activities_y,Main Goal_y,Environment_y,Weather_y,Food Preferences_y,Region_y
+Mountain,Aarav Sharma,Male,9876543210,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Aarav Sharma,Male,9876543210,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Aarav Sharma,Male,9876543210,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Aarav Sharma,Male,9876543210,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Aarav Sharma,Male,9876543210,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Aarav Sharma,Male,9876543210,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Aarav Sharma,Male,9876543210,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Beach,Vivaan Gupta,Male,9654321870,Goa,Medium,Summer,4-7 Days,Water Sports,Relaxation,Active,Tropical,"Seafood, Spicy",West
+Beach,Vivaan Gupta,Male,9654321870,Pondicherry,Medium,Winter,4-7 Days,"Beaches, Heritage",Adventure,Peaceful,Tropical,Seafood,North
+Beach,Vivaan Gupta,Male,9654321870,Rajasthan Desert,Medium,Summer,4-7 Days,Camel Safari,Adventure,Active,Temperate,Seafood,West
+Mountain,Diya Patel,Female,9012345678,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Diya Patel,Female,9012345678,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Diya Patel,Female,9012345678,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Diya Patel,Female,9012345678,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Diya Patel,Female,9012345678,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Diya Patel,Female,9012345678,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Diya Patel,Female,9012345678,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Spiritual,Riya Singh,Female,9345678921,Rishikesh,Medium,Winter,4-7 Days,"Yoga, Rafting",Spiritual Growth,Peaceful,Temperate,Vegetarian,North
+Spiritual,Riya Singh,Female,9345678921,Pushkar,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,North
+Spiritual,Riya Singh,Female,9345678921,Tirupati,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,South
+Spiritual,Riya Singh,Female,9345678921,Kedarnath,Medium,Winter,4-7 Days,"Trekking, Pilgrimage",Exploration,Peaceful,Mild,Vegetarian,Central India
+Spiritual,Riya Singh,Female,9345678921,Ziro Valley,Low,Summer,4-7 Days,Coffee Plantations,Exploration,Active,Cold,Vegetarian,South
+Cultural,Kabir Verma,Male,9678901234,Kochi,High,Winter,4-7 Days,Backwater Tours,Relaxation,Peaceful,Tropical,Seafood,South
+Heritage,Ananya Reddy,Female,9123456789,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Ananya Reddy,Female,9123456789,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Ananya Reddy,Female,9123456789,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Ananya Reddy,Female,9123456789,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Ananya Reddy,Female,9123456789,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Ananya Reddy,Female,9123456789,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Hill Station,Aryan Iyer,Male,9456789012,Darjeeling,Medium,Summer,4-7 Days,Tea Gardens,Exploration,Peaceful,Temperate,Vegetarian,East
+Hill Station,Aryan Iyer,Male,9456789012,Ooty,Medium,Summer,4-7 Days,Nature Walks,Relaxation,Peaceful,Mild,Vegetarian,South
+Hill Station,Aryan Iyer,Male,9456789012,Tawang,Medium,Winter,4-7 Days,Trekking,Relaxation,Peaceful,Cold,Spicy,North
+Hill Station,Aryan Iyer,Male,9456789012,Mount Abu,Low,Summer,4-7 Days,Hiking,Adventure,Active,Dry,South Indian,Central India
+Hill Station,Aryan Iyer,Male,9456789012,Bikaner,Low,Winter,4-7 Days,Cultural Exploration,Relaxation,Peaceful,Mild,North Indian,Northeast
+Hill Station,Ishaan Khanna,Male,9678903214,Darjeeling,Medium,Summer,4-7 Days,Tea Gardens,Exploration,Peaceful,Temperate,Vegetarian,East
+Hill Station,Ishaan Khanna,Male,9678903214,Ooty,Medium,Summer,4-7 Days,Nature Walks,Relaxation,Peaceful,Mild,Vegetarian,South
+Hill Station,Ishaan Khanna,Male,9678903214,Tawang,Medium,Winter,4-7 Days,Trekking,Relaxation,Peaceful,Cold,Spicy,North
+Hill Station,Ishaan Khanna,Male,9678903214,Mount Abu,Low,Summer,4-7 Days,Hiking,Adventure,Active,Dry,South Indian,Central India
+Hill Station,Ishaan Khanna,Male,9678903214,Bikaner,Low,Winter,4-7 Days,Cultural Exploration,Relaxation,Peaceful,Mild,North Indian,Northeast
+Heritage,Nitya Sharma,Female,9876543211,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Nitya Sharma,Female,9876543211,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Nitya Sharma,Female,9876543211,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Nitya Sharma,Female,9876543211,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Nitya Sharma,Female,9876543211,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Nitya Sharma,Female,9876543211,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Spiritual,Aanya Malhotra,Female,9876543222,Rishikesh,Medium,Winter,4-7 Days,"Yoga, Rafting",Spiritual Growth,Peaceful,Temperate,Vegetarian,North
+Spiritual,Aanya Malhotra,Female,9876543222,Pushkar,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,North
+Spiritual,Aanya Malhotra,Female,9876543222,Tirupati,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,South
+Spiritual,Aanya Malhotra,Female,9876543222,Kedarnath,Medium,Winter,4-7 Days,"Trekking, Pilgrimage",Exploration,Peaceful,Mild,Vegetarian,Central India
+Spiritual,Aanya Malhotra,Female,9876543222,Ziro Valley,Low,Summer,4-7 Days,Coffee Plantations,Exploration,Active,Cold,Vegetarian,South
+Mountain,Karan Yadav,Male,9678901111,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Karan Yadav,Male,9678901111,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Karan Yadav,Male,9678901111,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Karan Yadav,Male,9678901111,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Karan Yadav,Male,9678901111,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Karan Yadav,Male,9678901111,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Karan Yadav,Male,9678901111,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Heritage,Parth Mehta,Male,9123456780,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Parth Mehta,Male,9123456780,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Parth Mehta,Male,9123456780,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Parth Mehta,Male,9123456780,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Parth Mehta,Male,9123456780,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Parth Mehta,Male,9123456780,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Backwaters,Shivani Verma,Female,9654321122,Kumarakom,High,Winter,4-7 Days,Houseboat Ride,Relaxation,Peaceful,Tropical,Seafood,South
+Backwaters,Shivani Verma,Female,9654321122,Alleppey,Medium,Winter,4-7 Days,Houseboats,Relaxation,Peaceful,Tropical,Seafood,South
+Wildlife,Aditya Kumar,Male,9345678967,Ranthambore,Medium,Summer,4-7 Days,Safari,Adventure,Active,Dry,North Indian,North
+Wildlife,Aditya Kumar,Male,9345678967,Andaman Islands,Medium,Winter,4-7 Days,Water Sports,Relaxation,Active,Dry,North Indian,West
+Spiritual,Tanvi Agarwal,Female,9654321987,Rishikesh,Medium,Winter,4-7 Days,"Yoga, Rafting",Spiritual Growth,Peaceful,Temperate,Vegetarian,North
+Spiritual,Tanvi Agarwal,Female,9654321987,Pushkar,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,North
+Spiritual,Tanvi Agarwal,Female,9654321987,Tirupati,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,South
+Spiritual,Tanvi Agarwal,Female,9654321987,Kedarnath,Medium,Winter,4-7 Days,"Trekking, Pilgrimage",Exploration,Peaceful,Mild,Vegetarian,Central India
+Spiritual,Tanvi Agarwal,Female,9654321987,Ziro Valley,Low,Summer,4-7 Days,Coffee Plantations,Exploration,Active,Cold,Vegetarian,South
+Backwaters,Nikhil Patil,Male,9678901233,Kumarakom,High,Winter,4-7 Days,Houseboat Ride,Relaxation,Peaceful,Tropical,Seafood,South
+Backwaters,Nikhil Patil,Male,9678901233,Alleppey,Medium,Winter,4-7 Days,Houseboats,Relaxation,Peaceful,Tropical,Seafood,South
+Urban,Saanvi Rajput,Female,9012345671,Kolkata,Medium,Winter,4-7 Days,"Shopping, Heritage",Exploration,Active,Temperate,Street Food,East
+Urban,Saanvi Rajput,Female,9012345671,Mumbai,High,Winter,4-7 Days,"Beaches, Shopping",Exploration,Active,Tropical,Street Food,West
+Urban,Saanvi Rajput,Female,9012345671,Bangalore,Medium,Winter,4-7 Days,"Shopping, Sightseeing",Exploration,Active,Mild,Vegetarian,South
+Urban,Harsh Goel,Male,9654321100,Kolkata,Medium,Winter,4-7 Days,"Shopping, Heritage",Exploration,Active,Temperate,Street Food,East
+Urban,Harsh Goel,Male,9654321100,Mumbai,High,Winter,4-7 Days,"Beaches, Shopping",Exploration,Active,Tropical,Street Food,West
+Urban,Harsh Goel,Male,9654321100,Bangalore,Medium,Winter,4-7 Days,"Shopping, Sightseeing",Exploration,Active,Mild,Vegetarian,South
+Urban,Pranav Dubey,Male,9654321098,Kolkata,Medium,Winter,4-7 Days,"Shopping, Heritage",Exploration,Active,Temperate,Street Food,East
+Urban,Pranav Dubey,Male,9654321098,Mumbai,High,Winter,4-7 Days,"Beaches, Shopping",Exploration,Active,Tropical,Street Food,West
+Urban,Pranav Dubey,Male,9654321098,Bangalore,Medium,Winter,4-7 Days,"Shopping, Sightseeing",Exploration,Active,Mild,Vegetarian,South
+Heritage,Krishna Sharma,Female,9678901223,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Krishna Sharma,Female,9678901223,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Krishna Sharma,Female,9678901223,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Krishna Sharma,Female,9678901223,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Krishna Sharma,Female,9678901223,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Krishna Sharma,Female,9678901223,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Spiritual,Ayesha Khan,Female,9876543212,Rishikesh,Medium,Winter,4-7 Days,"Yoga, Rafting",Spiritual Growth,Peaceful,Temperate,Vegetarian,North
+Spiritual,Ayesha Khan,Female,9876543212,Pushkar,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,North
+Spiritual,Ayesha Khan,Female,9876543212,Tirupati,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,South
+Spiritual,Ayesha Khan,Female,9876543212,Kedarnath,Medium,Winter,4-7 Days,"Trekking, Pilgrimage",Exploration,Peaceful,Mild,Vegetarian,Central India
+Spiritual,Ayesha Khan,Female,9876543212,Ziro Valley,Low,Summer,4-7 Days,Coffee Plantations,Exploration,Active,Cold,Vegetarian,South
+Heritage,Tejas Patel,Male,9012345679,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Tejas Patel,Male,9012345679,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Tejas Patel,Male,9012345679,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Tejas Patel,Male,9012345679,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Tejas Patel,Male,9012345679,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Tejas Patel,Male,9012345679,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Beach,Ravi Kapoor,Female,9654321991,Goa,Medium,Summer,4-7 Days,Water Sports,Relaxation,Active,Tropical,"Seafood, Spicy",West
+Beach,Ravi Kapoor,Female,9654321991,Pondicherry,Medium,Winter,4-7 Days,"Beaches, Heritage",Adventure,Peaceful,Tropical,Seafood,North
+Beach,Ravi Kapoor,Female,9654321991,Rajasthan Desert,Medium,Summer,4-7 Days,Camel Safari,Adventure,Active,Temperate,Seafood,West
+Adventure,Sonali Sinha,Female,9678901267,Rishikesh,High,Winter,4-7 Days,"River Rafting, Yoga",Adventure,Active,Temperate,Vegetarian,North
+Mountain,Anshika Mehra,Male,9678901190,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Anshika Mehra,Male,9678901190,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Anshika Mehra,Male,9678901190,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Anshika Mehra,Male,9678901190,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Anshika Mehra,Male,9678901190,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Anshika Mehra,Male,9678901190,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Anshika Mehra,Male,9678901190,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Hill Station,Rudra Joshi,Female,9876543234,Darjeeling,Medium,Summer,4-7 Days,Tea Gardens,Exploration,Peaceful,Temperate,Vegetarian,East
+Hill Station,Rudra Joshi,Female,9876543234,Ooty,Medium,Summer,4-7 Days,Nature Walks,Relaxation,Peaceful,Mild,Vegetarian,South
+Hill Station,Rudra Joshi,Female,9876543234,Tawang,Medium,Winter,4-7 Days,Trekking,Relaxation,Peaceful,Cold,Spicy,North
+Hill Station,Rudra Joshi,Female,9876543234,Mount Abu,Low,Summer,4-7 Days,Hiking,Adventure,Active,Dry,South Indian,Central India
+Hill Station,Rudra Joshi,Female,9876543234,Bikaner,Low,Winter,4-7 Days,Cultural Exploration,Relaxation,Peaceful,Mild,North Indian,Northeast
+Hill Station,Kritika Agarwal,Male,9123456755,Darjeeling,Medium,Summer,4-7 Days,Tea Gardens,Exploration,Peaceful,Temperate,Vegetarian,East
+Hill Station,Kritika Agarwal,Male,9123456755,Ooty,Medium,Summer,4-7 Days,Nature Walks,Relaxation,Peaceful,Mild,Vegetarian,South
+Hill Station,Kritika Agarwal,Male,9123456755,Tawang,Medium,Winter,4-7 Days,Trekking,Relaxation,Peaceful,Cold,Spicy,North
+Hill Station,Kritika Agarwal,Male,9123456755,Mount Abu,Low,Summer,4-7 Days,Hiking,Adventure,Active,Dry,South Indian,Central India
+Hill Station,Kritika Agarwal,Male,9123456755,Bikaner,Low,Winter,4-7 Days,Cultural Exploration,Relaxation,Peaceful,Mild,North Indian,Northeast
+Desert,Rohit Yadav,Female,9456789043,Nainital,High,Winter,4-7 Days,"Boating, Hiking",Relaxation,Active,Tropical,Vegetarian,South
+Desert,Rohit Yadav,Female,9456789043,Kanha National Park,Low,Winter,4-7 Days,Wildlife Safari,Adventure,Peaceful,Cold,South Indian,Central India
+Desert,Rohit Yadav,Female,9456789043,Kullu,Low,Summer,4-7 Days,"Trekking, Camping",Exploration,Active,Mild,Spicy,Himalayan Region
+Desert,Rohit Yadav,Female,9456789043,Kullu Manali,Low,Winter,4-7 Days,Taj Mahal,Relaxation,Peaceful,Cold,Street Food,West
+Beach,Pooja Singh,Male,9678901253,Goa,Medium,Summer,4-7 Days,Water Sports,Relaxation,Active,Tropical,"Seafood, Spicy",West
+Beach,Pooja Singh,Male,9678901253,Pondicherry,Medium,Winter,4-7 Days,"Beaches, Heritage",Adventure,Peaceful,Tropical,Seafood,North
+Beach,Pooja Singh,Male,9678901253,Rajasthan Desert,Medium,Summer,4-7 Days,Camel Safari,Adventure,Active,Temperate,Seafood,West
+Wildlife,Akshay Chaudhary,Female,9654321845,Ranthambore,Medium,Summer,4-7 Days,Safari,Adventure,Active,Dry,North Indian,North
+Wildlife,Akshay Chaudhary,Female,9654321845,Andaman Islands,Medium,Winter,4-7 Days,Water Sports,Relaxation,Active,Dry,North Indian,West
+Desert,Pavitra Sharma,Male,9654321883,Nainital,High,Winter,4-7 Days,"Boating, Hiking",Relaxation,Active,Tropical,Vegetarian,South
+Desert,Pavitra Sharma,Male,9654321883,Kanha National Park,Low,Winter,4-7 Days,Wildlife Safari,Adventure,Peaceful,Cold,South Indian,Central India
+Desert,Pavitra Sharma,Male,9654321883,Kullu,Low,Summer,4-7 Days,"Trekking, Camping",Exploration,Active,Mild,Spicy,Himalayan Region
+Desert,Pavitra Sharma,Male,9654321883,Kullu Manali,Low,Winter,4-7 Days,Taj Mahal,Relaxation,Peaceful,Cold,Street Food,West
+Mountain,Manish Dubey,Female,9012345611,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Manish Dubey,Female,9012345611,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Manish Dubey,Female,9012345611,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Manish Dubey,Female,9012345611,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Manish Dubey,Female,9012345611,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Manish Dubey,Female,9012345611,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Manish Dubey,Female,9012345611,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Mountain,Nikita Rani,Male,9654321992,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Nikita Rani,Male,9654321992,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Nikita Rani,Male,9654321992,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Nikita Rani,Male,9654321992,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Nikita Rani,Male,9654321992,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Nikita Rani,Male,9654321992,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Nikita Rani,Male,9654321992,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Desert,Deepak Patel,Female,9654321965,Nainital,High,Winter,4-7 Days,"Boating, Hiking",Relaxation,Active,Tropical,Vegetarian,South
+Desert,Deepak Patel,Female,9654321965,Kanha National Park,Low,Winter,4-7 Days,Wildlife Safari,Adventure,Peaceful,Cold,South Indian,Central India
+Desert,Deepak Patel,Female,9654321965,Kullu,Low,Summer,4-7 Days,"Trekking, Camping",Exploration,Active,Mild,Spicy,Himalayan Region
+Desert,Deepak Patel,Female,9654321965,Kullu Manali,Low,Winter,4-7 Days,Taj Mahal,Relaxation,Peaceful,Cold,Street Food,West
+Tribal,Aishwarya Soni,Male,9654321932,Chopta,Low,Summer,4-7 Days,Camel Safari,Adventure,Active,Dry,South Indian,Rajasthan
+Hill Station,Manav Rathi,Male,9678901240,Darjeeling,Medium,Summer,4-7 Days,Tea Gardens,Exploration,Peaceful,Temperate,Vegetarian,East
+Hill Station,Manav Rathi,Male,9678901240,Ooty,Medium,Summer,4-7 Days,Nature Walks,Relaxation,Peaceful,Mild,Vegetarian,South
+Hill Station,Manav Rathi,Male,9678901240,Tawang,Medium,Winter,4-7 Days,Trekking,Relaxation,Peaceful,Cold,Spicy,North
+Hill Station,Manav Rathi,Male,9678901240,Mount Abu,Low,Summer,4-7 Days,Hiking,Adventure,Active,Dry,South Indian,Central India
+Hill Station,Manav Rathi,Male,9678901240,Bikaner,Low,Winter,4-7 Days,Cultural Exploration,Relaxation,Peaceful,Mild,North Indian,Northeast
+Spiritual,Sushant Agarwal,Male,9654321911,Rishikesh,Medium,Winter,4-7 Days,"Yoga, Rafting",Spiritual Growth,Peaceful,Temperate,Vegetarian,North
+Spiritual,Sushant Agarwal,Male,9654321911,Pushkar,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,North
+Spiritual,Sushant Agarwal,Male,9654321911,Tirupati,Low,Winter,4-7 Days,Pilgrimage,Pilgrimage,Peaceful,Mild,Vegetarian,South
+Spiritual,Sushant Agarwal,Male,9654321911,Kedarnath,Medium,Winter,4-7 Days,"Trekking, Pilgrimage",Exploration,Peaceful,Mild,Vegetarian,Central India
+Spiritual,Sushant Agarwal,Male,9654321911,Ziro Valley,Low,Summer,4-7 Days,Coffee Plantations,Exploration,Active,Cold,Vegetarian,South
+Mountain,Madhuri Bansal,Female,9654321890,Manali,Low,Winter,4-7 Days,"Trekking, Skiing",Adventure,Active,Cold,North Indian,North
+Mountain,Madhuri Bansal,Female,9654321890,Leh,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,North
+Mountain,Madhuri Bansal,Female,9654321890,Sikkim,Low,Summer,4-7 Days,"Trekking, Monasteries",Adventure,Active,Cold,North Indian,Northeast
+Mountain,Madhuri Bansal,Female,9654321890,Gulmarg,Medium,Summer,4-7 Days,Skiing,Relaxation,Active,Cold,North Indian,West
+Mountain,Madhuri Bansal,Female,9654321890,Rural Rajasthan,Medium,Summer,4-7 Days,Camel Ride,Exploration,Active,Cold,Spicy,Rajasthan
+Mountain,Madhuri Bansal,Female,9654321890,Spiti Valley,Low,Winter,4-7 Days,Trekking,Exploration,Active,Mild,South Indian,Himalayan Region
+Mountain,Madhuri Bansal,Female,9654321890,Coorg,Medium,Winter,4-7 Days,Pilgrimage,Exploration,Active,Mild,North Indian,East
+Heritage,Rishi Verma,Female,9876543201,Udaipur,Medium,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Mild,Vegetarian,West
+Heritage,Rishi Verma,Female,9876543201,Agra,Low,Winter,4-7 Days,Taj Mahal,Exploration,Peaceful,Mild,Vegetarian,North
+Heritage,Rishi Verma,Female,9876543201,Mysore,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Tropical,Vegetarian,South
+Heritage,Rishi Verma,Female,9876543201,Hampi,Low,Winter,4-7 Days,Heritage Tours,Exploration,Peaceful,Dry,Vegetarian,South
+Heritage,Rishi Verma,Female,9876543201,Khajuraho,Low,Winter,4-7 Days,Heritage Tours,Relaxation,Peaceful,Mild,Vegetarian,South
+Heritage,Rishi Verma,Female,9876543201,Bodh Gaya,Low,Winter,4-7 Days,"Trekking, Skiing",Relaxation,Active,Mild,North Indian,North
+Desert,Alok Tiwari,Female,9654321980,Nainital,High,Winter,4-7 Days,"Boating, Hiking",Relaxation,Active,Tropical,Vegetarian,South
+Desert,Alok Tiwari,Female,9654321980,Kanha National Park,Low,Winter,4-7 Days,Wildlife Safari,Adventure,Peaceful,Cold,South Indian,Central India
+Desert,Alok Tiwari,Female,9654321980,Kullu,Low,Summer,4-7 Days,"Trekking, Camping",Exploration,Active,Mild,Spicy,Himalayan Region
+Desert,Alok Tiwari,Female,9654321980,Kullu Manali,Low,Winter,4-7 Days,Taj Mahal,Relaxation,Peaceful,Cold,Street Food,West

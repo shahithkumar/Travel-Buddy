@@ -1,0 +1,247 @@
+{% extends "basee.html" %}
+
+{% block title %}{{ destination }} - Travel Planner{% endblock %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;500&family=Dancing+Script&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+{% endblock %}
+
+{% block content %}
+  <section class="result-section">
+    <div class="result-container">
+      {% if image_url %}
+        <div class="destination-image" data-aos="zoom-in">
+          <img src="{{ image_url }}" alt="{{ destination }}" onerror="this.src='/static/img/Coorg.jpeg';">
+        </div>
+      {% endif %}
+
+      <div class="destination-info" data-aos="fade-up">
+        {% if destination %}
+          <h2>{{ destination }}</h2>
+          <p class="intro">Your Perfect Getaway Awaits</p>
+
+          {% if option in ['both', 'user'] %}
+            <form action="/match_users" method="post" class="action-form">
+              <input type="hidden" name="Type" value="{{ form_data['Type'] }}">
+              <input type="hidden" name="Weather" value="{{ form_data['Weather'] }}">
+              <input type="hidden" name="Budget (₹)" value="{{ form_data['Budget (₹)'] }}">
+              <input type="hidden" name="Vibe" value="{{ form_data['Vibe'] }}">
+              <input type="hidden" name="Travel Goal" value="{{ form_data['Travel Goal'] }}">
+              <button type="submit" class="action-btn"><i class="fas fa-users"></i> Find a Travel Buddy</button>
+            </form>
+          {% endif %}
+
+          <form action="/plan_trip" method="post" class="action-form" id="plan-trip-form" onsubmit="showLoading()">
+            <input type="hidden" name="destination" value="{{ destination }}">
+            <button type="submit" class="action-btn"><i class="fas fa-map-marked-alt"></i> Plan My Trip</button>
+            <div id="loading-message" style="display: none; margin-top: 15px; font-family: 'Roboto', sans-serif; color: #d4a017;">
+              Planning your trip... Please wait!
+            </div>
+          </form>
+
+          <a href="/" class="back-link"><i class="fas fa-home"></i> Back to Home</a>
+
+          {% if not image_url %}
+            <p class="no-image">No pic for {{ destination }}—imagine the vibes!</p>
+          {% endif %}
+        {% else %}
+          <h2>Oops!</h2>
+          <p class="intro">No destination selected. Please go back and try again.</p>
+          <a href="/" class="back-link"><i class="fas fa-home"></i> Back to Home</a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    body {
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    .result-section {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, #2980b9, #27ae60);
+      min-height: calc(100vh - 70px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .result-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      gap: 40px;
+      padding: 20px;
+    }
+
+    .destination-info {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .destination-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: #d4a017;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .intro {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.8rem;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    .action-form {
+      margin: 20px 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group label i {
+      margin-right: 8px;
+      color: #d4a017;
+    }
+
+    .form-group input[type="number"],
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: #333;
+      background: #f8f1e9;
+      border: none;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .form-group input[type="number"]:focus,
+    .form-group select:focus {
+      box-shadow: 0 0 10px rgba(212, 160, 23, 0.5);
+      outline: none;
+    }
+
+    .action-btn {
+      padding: 12px 35px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      background: #d4a017;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    .action-btn i {
+      margin-right: 8px;
+    }
+
+    .action-btn:hover {
+      background: #2980b9;
+      transform: translateY(-5px);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: #d4a017;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .back-link i {
+      margin-right: 8px;
+    }
+
+    .back-link:hover {
+      color: #2980b9;
+    }
+
+    .destination-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .destination-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .destination-image img:hover {
+      transform: scale(1.05);
+    }
+
+    .no-image {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      color: #666;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .result-container {
+        flex-direction: column-reverse;
+        gap: 30px;
+      }
+
+      .destination-info h2 {
+        font-size: 2.5rem;
+      }
+
+      .intro {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    function showLoading() {
+      document.getElementById('loading-message').style.display = 'block';
+      document.querySelector('.action-btn[type="submit"]').disabled = true;
+    }
+  </script>
+{% endblock %}

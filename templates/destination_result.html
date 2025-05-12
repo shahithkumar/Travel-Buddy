@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1 {
+            color: #343a40;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Recommended Destination:</h1>
+    
+    <div class="card">
+        <p><strong>Destination:</strong> {{ destination if destination else "No destination found" }}</p>
+    </div>
+    
+    <!-- Form to pass data for user matching -->
+    <form action="{{ url_for('find_match') }}" method="POST">
+        <input type="hidden" name="destination_type" value="{{ destination }}">
+        
+        <!-- Add hidden fields to pass the same input features used for recommendation -->
+        <input type="hidden" name="budget" value="{{ budget }}"> 
+        <input type="hidden" name="travel_time" value="{{ travel_time }}">
+        <input type="hidden" name="activities" value="{{ activities }}">
+        <input type="hidden" name="goal" value="{{ goal }}">
+        <input type="hidden" name="environment" value="{{ environment }}">
+        <input type="hidden" name="weather" value="{{ weather }}">
+        <input type="hidden" name="food_preferences" value="{{ food_preferences }}">
+        <input type="hidden" name="region" value="{{ region }}">
+        
+        <button type="submit">Find a Matching Traveler</button>
+    </form>
+    
+    <!-- Button to return to the destination form -->
+    <a href="/destination">
+        <button type="button">Back to Destination Form</button>
+    </a>
+</body>
+</html>

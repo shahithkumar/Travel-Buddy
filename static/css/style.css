@@ -1,0 +1,135 @@
+/* static/css/style.css */
+:root {
+    --lux-dark: #0f1419; /* Deep midnight for header/footer */
+    --lux-light: #f8f1e9; /* Creamy off-white background */
+    --lux-accent: #d4a017; /* Golden amber for highlights */
+    --lux-text: #ffffff; /* Pure white for contrast */
+    --lux-subtle: #b0b0b0; /* Soft gray for secondary text */
+    --lux-shadow: rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--lux-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+    color: var(--lux-dark);
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background: linear-gradient(to bottom, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.7));
+    backdrop-filter: blur(12px);
+    padding: 15px 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--lux-text);
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-brand img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .navbar-brand:hover {
+    color: var(--lux-accent);
+  }
+  
+  .navbar-brand:hover img {
+    transform: rotate(15deg);
+  }
+  
+  .navbar-nav .nav-link {
+    color: var(--lux-text);
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: var(--lux-accent);
+    transform: translateY(-2px);
+  }
+  
+  .navbar-toggler {
+    border: none;
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background: linear-gradient(to top, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.7));
+    backdrop-filter: blur(12px);
+    padding: 40px 20px;
+    color: var(--lux-subtle);
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .footer-nav {
+    margin-bottom: 20px;
+  }
+  
+  .footer-nav a {
+    color: var(--lux-text);
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 10px 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .footer-nav a:hover {
+    color: var(--lux-accent);
+    transform: translateY(-2px);
+  }
+  
+  /* General Button Styles (Reusable) */
+  .btn-custom {
+    background: var(--lux-accent);
+    color: var(--lux-text);
+    border: none;
+    padding: 14px 30px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-custom:hover {
+    background: #e6b81c;
+    transform: translateY(-3px);
+  }

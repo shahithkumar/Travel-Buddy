@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Travel Buddy</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom Font: Playfair Display for elegance -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --lux-dark: #0f1419; /* Deep midnight for header/footer */
+      --lux-light: #f8f1e9; /* Creamy off-white background */
+      --lux-accent: #d4a017; /* Golden amber for highlights */
+      --lux-text: #ffffff; /* Pure white for contrast */
+      --lux-subtle: #b0b0b0; /* Soft gray for secondary text */
+      --lux-shadow: rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--lux-light);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      color: var(--lux-dark);
+    }
+
+    /* Navbar with Logo */
+    .navbar {
+      background: linear-gradient(to bottom, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.7));
+      backdrop-filter: blur(12px);
+      padding: 15px 5%;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--lux-text);
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand:hover {
+      color: var(--lux-accent);
+    }
+
+    .navbar-brand:hover img {
+      transform: rotate(15deg);
+    }
+
+    .navbar-nav .nav-link {
+      color: var(--lux-text);
+      font-size: 1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: var(--lux-accent);
+      transform: translateY(-2px);
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255, 0.9)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      position: relative;
+      background: url("{{ url_for('static', filename='img/bg-hero.jpg') }}") no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--lux-text);
+      margin-top: 70px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      z-index: 1;
+    }
+
+    .hero > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 40px;
+      animation: fadeInUp 1.5s ease 0.3s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-custom {
+      background: var(--lux-accent);
+      color: var(--lux-text);
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.2rem;
+      font-weight: 500;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background: #e6b81c;
+      transform: translateY(-3px);
+    }
+
+    /* Enhanced Features Section */
+    .features-section {
+      padding: 100px 20px;
+      background: linear-gradient(135deg, var(--lux-light) 0%, #e8d8c3 100%);
+      text-align: center;
+      {% if not session.token %}display: none;{% else %}display: block;{% endif %}
+    }
+
+    .features-section.active {
+      display: block; /* For pre-login flow */
+    }
+
+    .features-intro {
+      max-width: 800px;
+      margin: 0 auto 60px;
+    }
+
+    .features-intro h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--lux-dark);
+      margin-bottom: 20px;
+    }
+
+    .features-intro p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.3rem;
+      color: var(--lux-subtle);
+      font-weight: 300;
+    }
+
+    .feature-card {
+      background: var(--lux-text);
+      border-radius: 20px;
+      padding: 40px 20px;
+      margin: 20px 0;
+      box-shadow: 0 10px 30px var(--lux-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(212, 160, 23, 0.1), rgba(255, 255, 255, 0));
+      z-index: 0;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 20px 50px var(--lux-shadow);
+      background: #fffbf2;
+    }
+
+    .feature-card i {
+      font-size: 3rem;
+      color: var(--lux-accent);
+      margin-bottom: 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover i {
+      transform: scale(1.2);
+    }
+
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--lux-dark);
+      margin-bottom: 15px;
+      z-index: 1;
+      position: relative;
+    }
+
+    .feature-card p {
+      font-size: 1.2rem;
+      color: var(--lux-subtle);
+      z-index: 1;
+      position: relative;
+    }
+
+    .btn-continue {
+      margin-top: 50px;
+      background: var(--lux-dark);
+      color: var(--lux-text);
+      padding: 15px 35px;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 50px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-continue:hover {
+      background: var(--lux-accent);
+      transform: translateY(-5px);
+    }
+
+    /* Options Section */
+    .options-section {
+      padding: 80px 20px;
+      background: var(--lux-dark);
+      text-align: center;
+      color: var(--lux-text);
+      {% if not session.token %}display: none;{% else %}display: block;{% endif %}
+    }
+
+    .options-section.active {
+      display: block; /* For pre-login flow */
+    }
+
+    .options-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Existing Sections */
+    .destination-search {
+      padding: 80px 20px;
+      background: var(--lux-light);
+      text-align: center;
+    }
+
+    .destination-search h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--lux-dark);
+      margin-bottom: 40px;
+    }
+
+    .search-form {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 1px solid var(--lux-subtle);
+      border-radius: 10px;
+      background: var(--lux-text);
+      box-shadow: inset 0 2px 5px var(--lux-shadow);
+      transition: border 0.3s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--lux-accent);
+      outline: none;
+    }
+
+    .search-btn {
+      background: var(--lux-dark);
+      color: var(--lux-text);
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .search-btn:hover {
+      background: var(--lux-accent);
+    }
+
+    .featured-destination {
+      padding: 80px 20px;
+      background: var(--lux-light);
+    }
+
+    .featured-destination h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--lux-dark);
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      background: var(--lux-text);
+      box-shadow: 0 10px 30px var(--lux-shadow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px var(--lux-shadow);
+    }
+
+    .card-img-top {
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .card-body {
+      padding: 25px;
+      text-align: center;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--lux-dark);
+    }
+
+    .card-text {
+      color: var(--lux-subtle);
+      font-size: 1.1rem;
+    }
+
+    .testimonials {
+      padding: 80px 20px;
+      background: var(--lux-dark);
+      color: var(--lux-text);
+    }
+
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .testimonial-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 30px;
+      margin: 20px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .testimonial-quote {
+      font-size: 1.3rem;
+      font-weight: 300;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-author {
+      font-size: 1rem;
+      color: var(--lux-subtle);
+    }
+
+    .newsletter {
+      padding: 80px 20px;
+      background: var(--lux-light);
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--lux-dark);
+      margin-bottom: 40px;
+    }
+
+    .newsletter-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-control {
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 1px solid var(--lux-subtle);
+      border-radius: 10px;
+      background: var(--lux-text);
+    }
+
+    .btn-newsletter {
+      background: var(--lux-accent);
+      color: var(--lux-text);
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .btn-newsletter:hover {
+      background: #e6b81c;
+    }
+
+    /* Footer with Navbar Links */
+    .footer {
+      background: linear-gradient(to top, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.7));
+      backdrop-filter: blur(12px);
+      padding: 40px 20px;
+      color: var(--lux-subtle);
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .footer-nav {
+      margin-bottom: 20px;
+    }
+
+    .footer-nav a {
+      color: var(--lux-text);
+      font-size: 1rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 10px 20px;
+      transition: color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .footer-nav a:hover {
+      color: var(--lux-accent);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar with Logo -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/home">
+        <img src="{{ url_for('static', filename='img/logoo.png') }}" alt="Travel Buddy Logo"> Travel Buddy
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          {% if session.token %}
+            <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/notifications">Notifications</a></li>
+            <li class="nav-item"><a class="nav-link" href="/expenses">Expenses</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h1>Welcome to Travel Buddy</h1>
+    <p>Your journey begins here—connect, explore, and plan with ease.</p>
+    {% if not session.token %}
+      <button class="btn-custom" id="getStartedBtn">Get Started</button>
+    {% endif %}
+  </div>
+
+  <!-- Enhanced Features Section -->
+  <section class="features-section" id="featuresSection">
+    <div class="features-intro">
+      <h2>What we can do?</h2>
+      <p>Discover a world of possibilities with Travel Buddy—crafted to make every journey unforgettable.</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="feature-card">
+            <i class="fas fa-user-friends"></i>
+            <h3>Find Companions</h3>
+            <p>Connect with fellow explorers to share your adventures.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="feature-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Get Recommendations</h3>
+            <p>Uncover destinations perfectly suited to your dreams.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="feature-card">
+            <i class="fas fa-route"></i>
+            <h3>Plan Your Trip</h3>
+            <p>Enjoy a seamless itinerary tailored just for you.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="feature-card">
+            <i class="fas fa-wallet"></i>
+            <h3>Track Expenses</h3>
+            <p>Monitor your budget effortlessly on every trip.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% if not session.token %}
+      <button class="btn-continue" id="continueBtn">Continue</button>
+    {% endif %}
+  </section>
+
+  <!-- Options Section -->
+  <section class="options-section" id="optionsSection">
+    <h2>Choose Your Journey</h2>
+    <form action="/choose" method="post" class="d-flex flex-column align-items-center" id="optionsForm">
+      <div class="btn-group">
+        <button type="submit" name="option" value="destination" class="btn-custom">Destination Recommendations</button>
+        <button type="submit" name="option" value="user" class="btn-custom">Travel Companions</button>
+        <button type="submit" name="option" value="both" class="btn-custom">Both</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Existing Sections -->
+  <section class="destination-search">
+    <h2>Your Next Adventure Awaits</h2>
+    <form class="search-form" action="/recommend" method="post">
+      <input type="text" class="search-input" name="destination" placeholder="Where will you go? (e.g., Coorg, Goa)" required>
+      <button type="submit" class="search-btn">Find Your Path</button>
+    </form>
+  </section>
+
+  <section class="featured-destinations">
+    <h2>Curated Destinations</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/Coorg.jpeg') }}" class="card-img-top" alt="Coorg">
+            <div class="card-body">
+              <h5 class="card-title">Coorg</h5>
+              <p class="card-text">Lose yourself in misty hills and timeless serenity.</p>
+              <a href="/recommend" class="btn btn-custom">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/Goa.jpg') }}" class="card-img-top" alt="Goa">
+            <div class="card-body">
+              <h5 class="card-title">Goa</h5>
+              <p class="card-text">Dance to the rhythm of vibrant beaches.</p>
+              <a href="/recommend" class="btn btn-custom">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <img src="{{ url_for('static', filename='img/Jaisalmer.jpeg') }}" class="card-img-top" alt="Jaisalmer">
+            <div class="card-body">
+              <h5 class="card-title">Jaisalmer</h5>
+              <p class="card-text">Step into the golden embrace of the desert.</p>
+              <a href="/recommend" class="btn btn-custom">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Voices of Wanderers</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"A journey to Goa redefined by perfect curation."</p>
+            <p class="testimonial-author">— Raj, Seeker of Sunsets</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Coorg became my haven, thanks to this planner."</p>
+            <p class="testimonial-author">— Priya, Mountain Dreamer</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <p class="testimonial-quote">"Jaisalmer’s magic unfolded before my eyes."</p>
+            <p class="testimonial-author">— Vikram, Desert Voyager</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <h2>Join the Journey</h2>
+    <form class="newsletter-form">
+      <div class="input-group">
+        <input type="email" class="form-control" placeholder="Your Email" aria-label="Email" required>
+        <button type="submit" class="btn btn-newsletter">Subscribe</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer with Navbar Links -->
+  <footer class="footer">
+    <div class="footer-nav">
+      {% if session.token %}
+        <a href="/dashboard">Dashboard</a>
+        <a href="/notifications">Notifications</a>
+        <a href="/expenses">Expenses</a>
+        <a href="/logout">Logout</a>
+      {% else %}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      {% endif %}
+    </div>
+    <p>© 2025 Travel Buddy. All rights reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+  <!-- Custom JavaScript -->
+  <script>
+    {% if not session.token %}
+      document.getElementById('getStartedBtn').addEventListener('click', function() {
+        document.getElementById('featuresSection').classList.add('active');
+        this.style.display = 'none';
+        window.scrollTo({ top: document.getElementById('featuresSection').offsetTop, behavior: 'smooth' });
+      });
+
+      document.getElementById('continueBtn').addEventListener('click', function() {
+        document.getElementById('optionsSection').classList.add('active');
+        window.scrollTo({ top: document.getElementById('optionsSection').offsetTop, behavior: 'smooth' });
+      });
+
+      document.getElementById('optionsForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        window.location.href = '/login?next=/choose';
+      });
+    {% endif %}
+
+    document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      alert(`Welcome aboard, ${email}!`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>

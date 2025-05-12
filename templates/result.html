@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}RESULT{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="content-box">
+        <h1>Destination Recommendation</h1>
+        <p><strong>Recommended Destination:</strong> {{ destination }}</p>
+
+        <h2>Matching User</h2>
+        <p><strong>Name:</strong> {{ user_name }}</p>
+        <p><strong>Contact No:</strong> {{ contact }}</p>
+        <p><strong>Gender:</strong> {{ gender }}</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+   
+
+{% endblock %}
+

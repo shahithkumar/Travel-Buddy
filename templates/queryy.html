@@ -1,0 +1,568 @@
+{% extends "basee.html" %}
+
+{% block title %}Plan Your Trip - Travel Planner{% endblock %}
+
+{% block head %}
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;500&family=Dancing+Script&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+  <section class="query-section">
+    <h1>Let’s Plan Your Awesome Trip</h1>
+    <p class="intro">Pick your travel vibe, and I’ll find the perfect spot for you!</p>
+
+    <form action="/recommend" method="post" class="query-flow" id="query-form">
+      <!-- Direction -->
+      <div class="question">
+        <h2>Which direction is your starting place in India? <button type="button" class="info-btn" onclick="showInfo('Direction')">i</button></h2>
+        <select name="Direction" id="Direction" required>
+          <option value="">Choose one...</option>
+          <option value="North">North (top part of India)</option>
+          <option value="East">East (right side of India)</option>
+          <option value="South">South (bottom part of India)</option>
+          <option value="West">West (left side of India)</option>
+        </select>
+        <div id="Direction-info" class="info-popup" style="display: none;">
+          <h3>About Directions in India</h3>
+          <p><strong>North:</strong> The top part of India, with mountains and cool weather—like Jammu & Kashmir or Delhi.<br>
+          <strong>East:</strong> The right side, with rivers and green hills—like West Bengal or Assam.<br>
+          <strong>South:</strong> The bottom, warm and coastal—like Tamil Nadu or Kerala.<br>
+          <strong>West:</strong> The left side, with deserts and beaches—like Rajasthan or Goa.</p>
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="question">
+        <h2>Which state is your starting place in? <button type="button" class="info-btn" onclick="showInfo('State')">i</button></h2>
+        <select name="State" id="State" required>
+          <option value="">Pick one...</option>
+        </select>
+        <div id="State-info" class="info-popup" style="display: none;">
+          <h3>About States</h3>
+          <p>This is where you’re starting from! Once you pick a direction, I’ll show you the states in that part of India. Each state has its own vibe—some have big cities, others have quiet villages or forests.</p>
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="question">
+        <h2>Which famous city is closest to your starting place? <button type="button" class="info-btn" onclick="showInfo('City')">i</button></h2>
+        <select name="city" id="City" required>
+          <option value="">Tell me...</option>
+        </select>
+        <div id="City-info" class="info-popup" style="display: none;">
+          <h3>About Cities</h3>
+          <p>This helps me figure out how far you’ll travel! Pick the big city nearest to where you are—it doesn’t have to be exact, just close enough.</p>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="question">
+        <h2>What kind of trip do you want? <button type="button" class="info-btn" onclick="showInfo('Type')">i</button></h2>
+        <select name="Type" id="Type" required>
+          <option value="">Choose one...</option>
+          <option value="Beach">Beaches and waves</option>
+          <option value="Mountain">Mountains and fresh air</option>
+          <option value="Hill">Hills and cozy spots</option>
+          <option value="Desert">Deserts and stars</option>
+          <option value="Heritage">History and culture</option>
+          <option value="Spiritual">Temples and peace</option>
+          <option value="Wildlife">Jungles and animals</option>
+        </select>
+        <div id="Type-info" class="info-popup" style="display: none;">
+          <h3>What These Trips Mean</h3>
+          <p><strong>Beaches and waves:</strong> You’ll go to places by the sea with sandy beaches, warm sun, and water to swim or relax. Great for fun in the sun!<br>
+          <strong>Mountains and fresh air:</strong> These are tall, rocky places with cool air and amazing views. Perfect if you love hiking or nature.<br>
+          <strong>Hills and cozy spots:</strong> Smaller than mountains, hills have green slopes and cute little towns. Good for a calm, relaxing trip.<br>
+          <strong>Deserts and stars:</strong> Big sandy areas with almost no water. At night, you can see tons of stars because it’s so clear!<br>
+          <strong>History and culture:</strong> Visit old places with stories, like castles or museums, to learn about the past and how people lived.<br>
+          <strong>Temples and peace:</strong> Quiet spots with temples or holy places where you can feel calm and think deeply.<br>
+          <strong>Jungles and animals:</strong> Wild forest areas full of trees, birds, and animals. It’s exciting for people who love adventure and wildlife.</p>
+        </div>
+      </div>
+
+      <!-- Weather -->
+      <div class="question">
+        <h2>What weather do you like? <button type="button" class="info-btn" onclick="showInfo('Weather')">i</button></h2>
+        <select name="Weather" id="Weather" required>
+          <option value="">Pick one...</option>
+        </select>
+        <div id="Weather-info" class="info-popup" style="display: none;">
+          <h3>About the Weather Choices</h3>
+          <p>Weather depends on your trip type, but here’s what they mean:<br>
+          <strong>Tropical/Hot:</strong> Warm and sunny all day, like summer. Good for swimming or lying in the sun.<br>
+          <strong>Mild/Pleasant:</strong> Not too hot, not too cold—just nice and comfy for walking around.<br>
+          <strong>Breezy/Chilly:</strong> Cool with some wind. You might need a light jacket, but it feels fresh.<br>
+          <strong>Snowy/Cold:</strong> Very cold with snow on the ground. Fun for snow games or cozying up inside.<br>
+          <strong>Dry:</strong> No rain, just sunny and dry. Perfect for clear skies and starry nights.<br>
+          <strong>Humid/Rainy:</strong> Wet and sticky, with rain sometimes. Great if you like lush green places.<br>
+          <strong>Misty:</strong> Foggy and cool, like a magical cloud around you. Feels peaceful.</p>
+        </div>
+      </div>
+
+      <!-- Budget -->
+      <div class="question">
+        <h2>How much money do you want to spend? <button type="button" class="info-btn" onclick="showInfo('Budget (₹)')">i</button></h2>
+        <select name="Budget (₹)" id="Budget (₹)" required>
+          <option value="">Tell me...</option>
+        </select>
+        <div id="Budget (₹)-info" class="info-popup" style="display: none;">
+          <h3>What Your Budget Means</h3>
+          <p>This is how much money you’ll spend in Indian Rupees (₹):<br>
+          <strong>Under 5K:</strong> Very cheap trip! Basic stays and travel, great for saving money.<br>
+          <strong>5K-15K:</strong> Affordable—simple hotels and some fun activities.<br>
+          <strong>15K-25K:</strong> Mid-range—nicer stays and more experiences.<br>
+          <strong>25K+:</strong> Expensive—luxury stays, good food, and special activities.</p>
+        </div>
+      </div>
+
+      <!-- Vibe -->
+      <div class="question">
+        <h2>What’s your trip mood? <button type="button" class="info-btn" onclick="showInfo('Vibe')">i</button></h2>
+        <select name="Vibe" id="Vibe" required>
+          <option value="">What’s your style?</option>
+        </select>
+        <div id="Vibe-info" class="info-popup" style="display: none;">
+          <h3>What’s a Trip Mood?</h3>
+          <p>This is how you want to feel on your trip:<br>
+          <strong>To Have Fun:</strong> Busy places with lots of action and excitement.<br>
+          <strong>To Explore:</strong> Discovering new spots and meeting people.<br>
+          <strong>To Rest:</strong> Calm and quiet, just relaxing.<br>
+          <strong>To Celebrate:</strong> Making special memories with joy.<br>
+          <strong>To Learn:</strong> Finding out new things and taking it all in.</p>
+        </div>
+      </div>
+
+      <!-- Travel Goal -->
+      <div class="question">
+        <h2>Why are you traveling? <button type="button" class="info-btn" onclick="showInfo('Travel Goal')">i</button></h2>
+        <select name="Travel Goal" id="Travel Goal" required>
+          <option value="">What’s your goal?</option>
+        </select>
+        <div id="Travel Goal-info" class="info-popup" style="display: none;">
+          <h3>Why You’re Going</h3>
+          <p>This is your reason for the trip:<br>
+          <strong>Exciting Adventures:</strong> Thrilling stuff like hiking or water sports.<br>
+          <strong>New Friends:</strong> Meeting people and sharing stories.<br>
+          <strong>Good Memories:</strong> Making moments to remember forever.<br>
+          <strong>Peace and Quiet:</strong> Chilling out away from noise.<br>
+          <strong>Great Photos:</strong> Snapping cool pics of amazing places.</p>
+        </div>
+      </div>
+
+      <button type="submit" class="next-step">Find My Trip!</button>
+    </form>
+
+    <footer class="teaser">Your dream trip is waiting...</footer>
+  </section>
+
+  <style>
+    body {
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="5" fill="%23d4a017"/></svg>') 10 10, auto;
+    }
+
+    .query-section {
+      padding: 120px 20px 80px;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center/cover;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .query-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .intro {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: #f8f1e9;
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    .query-flow {
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .question {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .question:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .question h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #0f1419;
+      margin-bottom: 15px;
+    }
+
+    .question select {
+      width: 100%;
+      padding: 12px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.1rem;
+      color: #0f1419;
+      background: #f8f1e9;
+      border: none;
+      border-radius: 8px;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+      background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23d4a017%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 10px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .question select:hover {
+      box-shadow: 0 5px 10px rgba(212, 160, 23, 0.3);
+    }
+
+    .question select:focus {
+      box-shadow: 0 0 10px rgba(212, 160, 23, 0.5);
+      outline: none;
+    }
+
+    .next-step {
+      padding: 12px 30px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.2rem;
+      background: #d4a017;
+      color: #fff;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      margin-top: 20px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .next-step:hover {
+      background: #e6b81c;
+      transform: translateY(-5px);
+    }
+
+    .next-step::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 20%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: rotate(30deg);
+      transition: all 0.5s ease;
+    }
+
+    .next-step:hover::after {
+      left: 150%;
+    }
+
+    .teaser {
+      position: absolute;
+      bottom: 20px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .info-btn {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      border-radius: 50%;
+      background: #d4a017;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-left: 12px;
+      font-size: 14px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background 0.3s ease;
+    }
+    .info-btn:hover {
+      background: #e6b81c;
+    }
+
+    .info-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      color: #0f1419;
+      padding: 25px;
+      border-radius: 15px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 550px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      z-index: 100;
+      border: 1px solid #d4a017;
+      animation: popupFadeIn 0.3s ease-out;
+    }
+    .info-popup h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #d4a017;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .info-popup p {
+      margin: 0;
+      padding: 0 10px;
+    }
+    .info-popup strong {
+      color: #d4a017;
+      font-weight: 500;
+    }
+    .info-popup::-webkit-scrollbar {
+      width: 8px;
+    }
+    .info-popup::-webkit-scrollbar-thumb {
+      background: #d4a017;
+      border-radius: 4px;
+    }
+    .info-popup::-webkit-scrollbar-track {
+      background: #f8f1e9;
+    }
+
+    @keyframes popupFadeIn {
+      from { opacity: 0; transform: translate(-50%, -45%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+  </style>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    const typeMapping = {
+      "Beach": {
+        "weather": ["Tropical", "Mild", "Breezy"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Good Memories", "Peace and Quiet", "Great Photos"]
+      },
+      "Mountain": {
+        "weather": ["Snowy", "Chilly", "Cold", "Pleasant"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      },
+      "Hill": {
+        "weather": ["Misty", "Breezy", "Pleasant", "Cold", "Rainy"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      },
+      "Desert": {
+        "weather": ["Hot", "Dry"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      },
+      "Heritage": {
+        "weather": ["Warm", "Mild"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      },
+      "Spiritual": {
+        "weather": ["Hot", "Chilly", "Pleasant", "Mild"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      },
+      "Wildlife": {
+        "weather": ["Humid", "Pleasant"],
+        "budget": ["Under 5K", "5K-15K", "15K-25K", "25K+"],
+        "vibe": ["To Have Fun", "To Explore", "To Rest", "To Celebrate", "To Learn"],
+        "travelGoal": ["Exciting Adventures", "New Friends", "Peace and Quiet", "Good Memories", "Great Photos"]
+      }
+    };
+
+    const directionMapping = {
+      "North": [
+        "Jammu & Kashmir", "Himachal Pradesh", "Punjab", "Haryana", "Uttarakhand", "Uttar Pradesh", "Delhi"
+      ],
+      "East": [
+        "West Bengal", "Odisha", "Bihar", "Jharkhand", "Assam", "Arunachal Pradesh", "Meghalaya", 
+        "Manipur", "Mizoram", "Nagaland", "Tripura", "Sikkim"
+      ],
+      "South": [
+        "Tamil Nadu", "Karnataka", "Andhra Pradesh", "Kerala", "Telangana", "Andaman and Nicobar Islands",
+        "Puducherry", "Lakshadweep", "Chhattisgarh"
+      ],
+      "West": [
+        "Maharashtra", "Gujarat", "Rajasthan", "Goa", "Madhya Pradesh", "Daman and Diu"
+      ]
+    };
+
+    const stateCityMapping = {
+      "Jammu & Kashmir": ["Srinagar", "Gulmarg"],
+      "Himachal Pradesh": ["Shimla", "Manali", "Spiti Valley"],
+      "Punjab": ["Amritsar", "Chandigarh"],
+      "Haryana": ["Gurugram", "Chandigarh"],
+      "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh", "Nainital", "Mussoorie", "Kedarnath", "Auli", "Ranikhet", "Jim Corbett"],
+      "Uttar Pradesh": ["Lucknow", "Agra", "Varanasi", "Fatehpur Sikri"],
+      "Delhi": ["Delhi"],
+      "West Bengal": ["Kolkata", "Darjeeling", "Sundarbans"],
+      "Odisha": ["Bhubaneswar", "Puri"],
+      "Bihar": ["Patna"],
+      "Jharkhand": ["Ranchi"],
+      "Assam": ["Guwahati", "Kaziranga"],
+      "Arunachal Pradesh": ["Tawang"],
+      "Meghalaya": ["Shillong", "Cherrapunji"],
+      "Manipur": ["Imphal"],
+      "Mizoram": ["Aizawl"],
+      "Nagaland": ["Kohima"],
+      "Tripura": ["Agartala"],
+      "Sikkim": ["Gangtok"],
+      "Tamil Nadu": ["Chennai", "Ooty", "Kodaikanal", "Rameswaram"],
+      "Karnataka": ["Bengaluru", "Coorg", "Hampi", "Gokarna"],
+      "Andhra Pradesh": ["Hyderabad", "Vizag", "Tirupati"],
+      "Kerala": ["Kovalam", "Alleppey", "Munnar"],
+      "Telangana": ["Hyderabad"],
+      "Andaman and Nicobar Islands": ["Andaman"],
+      "Puducherry": ["Pondicherry"],
+      "Lakshadweep": ["Lakshadweep"],
+      "Chhattisgarh": ["Raipur"],
+      "Maharashtra": ["Mumbai", "Lonavala", "Mahabaleshwar"],
+      "Gujarat": ["Ahmedabad", "Rann of Kutch", "Dwarka", "Gir"],
+      "Rajasthan": ["Jaipur", "Udaipur", "Jaisalmer", "Bikaner", "Pushkar", "Mount Abu"],
+      "Goa": ["Goa"],
+      "Madhya Pradesh": ["Khajuraho"],
+      "Daman and Diu": ["Diu"]
+    };
+
+    window.onload = function() {
+      document.getElementById("Direction").addEventListener("change", updateStateDropdown);
+      document.getElementById("State").addEventListener("change", updateCityDropdown);
+      document.getElementById("Type").addEventListener("change", updateDropdowns);
+      document.getElementById("Type").addEventListener("change", function() {
+        updateBackground(this.value);
+      });
+    };
+
+    function updateStateDropdown() {
+      const directionSelect = document.getElementById("Direction");
+      const selectedDirection = directionSelect.value;
+      const states = directionMapping[selectedDirection] || [];
+      updateOptions("State", states);
+      updateOptions("City", []); // Reset city dropdown when direction changes
+    }
+
+    function updateCityDropdown() {
+      const stateSelect = document.getElementById("State");
+      const selectedState = stateSelect.value;
+      const cities = stateCityMapping[selectedState] || [];
+      updateOptions("City", cities);
+    }
+
+    function updateDropdowns() {
+      const typeSelect = document.getElementById("Type");
+      const selectedType = typeSelect.value;
+      const mapping = typeMapping[selectedType] || { 
+        weather: [], 
+        budget: [], 
+        vibe: [], 
+        travelGoal: [] 
+      };
+
+      updateOptions("Weather", mapping.weather);
+      updateOptions("Budget (₹)", mapping.budget);
+      updateOptions("Vibe", mapping.vibe);
+      updateOptions("Travel Goal", mapping.travelGoal);
+    }
+
+    function updateOptions(elementId, optionsArray) {
+      const selectElement = document.getElementById(elementId);
+      selectElement.innerHTML = '<option value="">--Pick one--</option>';
+      if (optionsArray && optionsArray.length > 0) {
+        optionsArray.forEach(option => {
+          const opt = document.createElement("option");
+          opt.value = option;
+          opt.textContent = option;
+          selectElement.appendChild(opt);
+        });
+        console.log(`Updated ${elementId} with options:`, optionsArray);
+      } else {
+        console.log(`No options for ${elementId} - Selection not made yet`);
+      }
+    }
+
+    function updateBackground(type) {
+      const backgrounds = {
+        "Beach": 'url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e)',
+        "Mountain": 'url(https://images.unsplash.com/photo-1542224566-6e85f2e6772f)',
+        "Hill": 'url(https://images.unsplash.com/photo-1519681393784-d120267933ba)',
+        "Desert": 'url(https://images.unsplash.com/photo-1542401886-65d6c61db217)',
+        "Heritage": 'url(https://images.unsplash.com/photo-1532375810220-2dbe87d9b649)',
+        "Spiritual": 'url(https://images.unsplash.com/photo-1483683804023-6cc3e9e02497)',
+        "Wildlife": 'url(https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20)'
+      };
+      document.querySelector('.query-section').style.backgroundImage = backgrounds[type] || 'url(https://images.unsplash.com/photo-1501785888041-af3ef285b470)';
+    }
+
+    function showInfo(id) {
+      const popup = document.getElementById(`${id}-info`);
+      if (popup.style.display === "none" || popup.style.display === "") {
+        document.querySelectorAll('.info-popup').forEach(p => p.style.display = "none");
+        popup.style.display = "block";
+      } else {
+        popup.style.display = "none";
+      }
+    }
+
+    document.addEventListener("click", function(event) {
+      const popups = document.querySelectorAll('.info-popup');
+      const infoButtons = document.querySelectorAll('.info-btn');
+      let isClickInside = false;
+
+      popups.forEach(popup => {
+        if (popup.contains(event.target)) isClickInside = true;
+      });
+      infoButtons.forEach(btn => {
+        if (btn.contains(event.target)) isClickInside = true;
+      });
+
+      if (!isClickInside) {
+        popups.forEach(popup => popup.style.display = "none");
+      }
+    });
+  </script>
+{% endblock %}

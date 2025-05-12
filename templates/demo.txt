@@ -1,0 +1,11 @@
+ {% if user %}
+        <h3>Welcome, {{ user.name }}!</h3>
+        <h3>Your Wages: ₹{{ wages }}</h3>
+        <h3>Your Total Expenses: ₹{{ total_expenses }}</h3>
+        
+        <a href="{{ url_for('expense_tracking') }}"><button>Track Your Expenses</button></a>
+        <a href="{{ url_for('destination_recommendation') }}"><button>Get Destination Recommendation</button></a>
+        <a href="{{ url_for('user_matching') }}"><button>Match with Other Travelers</button></a>
+    {% else %}
+        <p>Please <a href="{{ url_for('login') }}">Login</a> to access your data.</p>
+    {% endif %}

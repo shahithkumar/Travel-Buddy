@@ -1,0 +1,530 @@
+{% extends "basee.html" %}
+
+{% block title %}Travel Dashboard - Travel Planner{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;500&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+    <section class="dashboard-section">
+        <div class="dashboard-container">
+            <h1 data-aos="fade-in">Your Travel Dashboard</h1>
+
+            {% if recommended_dest %}
+            <div class="card mb-4" data-aos="zoom-in">
+                <div class="card-header">
+                    <i class="icon fas fa-map-marker-alt"></i> Recommended Destination
+                </div>
+                <div class="card-body">
+                    <h5 class="dest-title">{{ recommended_dest }}</h5>
+                    {% if form_data %}
+                    <p><strong>Your Preferences:</strong></p>
+                    <ul class="pref-list">
+                        {% for key, value in form_data.items() %}
+                        <li><span class="pref-key">{{ key }}</span>: {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if matched_user %}
+            <div class="card mb-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-header">
+                    <i class="icon fas fa-user-friends"></i> Matched Travel Buddy
+                </div>
+                <div class="card-body buddy-grid">
+                    <div class="buddy-info">
+                        <p><strong>Name:</strong> {{ matched_user.Name }}</p>
+                        <p><strong>Email:</strong> {{ matched_user.Email }}</p>
+                        <p><strong>Phone:</strong> {{ matched_user['Phone Number'] }}</p>
+                        <p><strong>Gender:</strong> {{ matched_user.Gender }}</p>
+                    </div>
+                    <div class="buddy-avatar">
+                        <img src="{{ url_for('static', filename='img/default_' + ('female.jpg' if matched_user.Gender == 'F' else 'male.jpeg')) }}" alt="Avatar" class="rounded-circle">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if itinerary %}
+            <div class="card mb-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-header">
+                    <i class="icon fas fa-route"></i> Your Trip Plan to {{ destination }}
+                </div>
+                <div class="card-body">
+                    <div class="timeline">
+                        {% for day in itinerary %}
+                        <div class="day-card {{ 'left' if loop.index0 % 2 == 0 else 'right' }}" data-aos="flip-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                            {% if 'Day' in day %}
+                            <h3>Day {{ day['Day'] }}</h3>
+                            {% if 'Morning Activity (Cost)' in day %}
+                            <div class="activity"><i class="fas fa-sun"></i> <strong>Morning:</strong> {{ day["Morning Activity (Cost)"] }}</div>
+                            {% endif %}
+                            {% if 'Afternoon Activity (Cost)' in day %}
+                            <div class="activity"><i class="fas fa-cloud-sun"></i> <strong>Afternoon:</strong> {{ day["Afternoon Activity (Cost)"] }}</div>
+                            {% endif %}
+                            {% if 'Evening Activity (Cost)' in day %}
+                            <div class="activity"><i class="fas fa-moon"></i> <strong>Evening:</strong> {{ day["Evening Activity (Cost)"] }}</div>
+                            {% endif %}
+                            {% if 'Daily Cost (₹)' in day %}
+                            <div class="cost"><i class="fas fa-rupee-sign"></i> Daily Cost: ₹{{ day["Daily Cost (₹)"] }}</div>
+                            {% endif %}
+                            {% if 'Image Source & Link' in day and 'YouTube Vlog Link' in day %}
+                            <div class="media">
+                                <a href="{{ day['Image Source & Link'] }}" target="_blank">
+                                    <img src="{{ day['Image Source & Link'] }}" alt="Day {{ day['Day'] }} Image">
+                                </a>
+                                <a href="{{ day['YouTube Vlog Link'] }}" target="_blank" class="vlog-btn">Watch Vlog</a>
+                            </div>
+                            {% endif %}
+                            {% else %}
+                            <h3>Day {{ loop.index }}</h3>
+                            <div class="activity">{{ day.get('Details', 'No details available') }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% if expenses %}
+            <div class="card mb-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card-header">
+                    <i class="icon fas fa-wallet"></i> Your Expenses
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Amount</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for expense in expenses %}
+                            <tr data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+                                <td>₹{{ expense.amount }}</td>
+                                <td>{{ expense.category }}</td>
+                                <td>{{ expense.description }}</td>
+                                <td>{{ expense.date.strftime('%Y-%m-%d') }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="total-expense">
+                        <p>Total: ₹{{ expenses | map(attribute='amount') | sum }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Instagram-Like Notifications Section with Gender-Based Avatars -->
+            <div class="card mb-4" data-aos="zoom-in" data-aos-delay="400">
+                <div class="card-header">
+                    <i class="icon fas fa-bell"></i> Notifications
+                </div>
+                <div class="card-body notify-body">
+                    {% if sent_messages or received_messages %}
+                        {% if sent_messages %}
+                        <h4 class="notify-subhead">Sent Messages</h4>
+                        {% for message in sent_messages %}
+                        <div class="notify-item" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+                            <img src="{{ url_for('static', filename='img/default_' + ('female.jpg' if message.recipient_gender == 'F' else 'male.jpeg')) }}" alt="Avatar" class="notify-avatar">
+                            <div class="notify-content">
+                                <p><strong>To: {{ message.recipient_name }}</strong></p>
+                                <p>{{ message.content }}</p>
+                                <small>{{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% if received_messages %}
+                        <h4 class="notify-subhead mt-4">Received Messages</h4>
+                        {% for message in received_messages %}
+                        <div class="notify-item {% if not message.read %}unread{% endif %}" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 50 }}">
+                            <img src="{{ url_for('static', filename='img/default_' + ('female.jpg' if User.query.get(message.sender_id).gender == 'F' else 'male.jpeg')) }}" alt="Avatar" class="notify-avatar">
+                            <div class="notify-content">
+                                <p><strong>From: {{ User.query.get(message.sender_id).username }}</strong></p>
+                                <p>{{ message.content }}</p>
+                                <small>{{ message.timestamp.strftime('%Y-%m-%d %H:%M') }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% else %}
+                        <p class="no-notify">No notifications yet—stay tuned!</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <a href="{{ url_for('home') }}" class="back-link" data-aos="fade-up" data-aos-delay="500">Back to Home</a>
+        </div>
+    </section>
+
+    <style>
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="5" fill="%23d4a017"/></svg>') 10 10, auto;
+            margin: 0;
+        }
+
+        .navbar {
+            background: #343a40;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .dashboard-section {
+            padding: 100px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center center/cover;
+            min-height: calc(100vh - 70px);
+            color: #fff;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 40px;
+            color: #d4a017;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-header {
+            background: #d4a017;
+            color: #fff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+        }
+
+        .card-body {
+            padding: 30px;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .dest-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #2980b9;
+        }
+
+        .pref-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pref-list li {
+            margin: 5px 0;
+            background: rgba(212, 160, 23, 0.1);
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .pref-key {
+            font-weight: 500;
+            color: #d4a017;
+        }
+
+        .buddy-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .buddy-avatar img {
+            border: 3px solid #d4a017;
+            width: 100px;
+            height: 100px;
+            transition: transform 0.3s;
+        }
+
+        .buddy-avatar img:hover {
+            transform: rotate(10deg);
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #d4a017, #2980b9);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .day-card {
+            position: relative;
+            width: 45%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .day-card.left { left: 0; }
+        .day-card.right { left: 55%; }
+
+        .day-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #d4a017;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            top: 20px;
+            z-index: 1;
+            transition: background 0.3s;
+        }
+
+        .day-card:hover::after {
+            background: #e74c3c;
+        }
+
+        .day-card.left::after { right: -30px; }
+        .day-card.right::after { left: -30px; }
+
+        .day-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d4a017;
+        }
+
+        .activity {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .activity i {
+            color: #2980b9;
+        }
+
+        .cost {
+            font-weight: 500;
+            color: #27ae60;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .media img {
+            border-radius: 8px;
+            max-width: 120px;
+            transition: transform 0.3s;
+        }
+
+        .media img:hover {
+            transform: scale(1.1);
+        }
+
+        .vlog-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #e74c3c;
+            color: #fff;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .vlog-btn:hover {
+            background: #c0392b;
+        }
+
+        .table th {
+            background: #d4a017;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .table td {
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .table tr:hover {
+            background: rgba(212, 160, 23, 0.1);
+        }
+
+        .total-expense p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #27ae60;
+            background: rgba(212, 160, 23, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Instagram-Like Notifications Styling */
+        .notify-body {
+            padding: 20px;
+        }
+
+        .notify-subhead {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: #d4a017;
+            margin-bottom: 15px;
+        }
+
+        .notify-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+
+        .notify-item:hover {
+            background: rgba(212, 160, 23, 0.1);
+        }
+
+        .notify-item.unread {
+            background: rgba(41, 128, 185, 0.1);
+            font-weight: 500;
+        }
+
+        .notify-item.unread::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: #2980b9;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .notify-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #d4a017;
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+
+        .notify-avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .notify-content {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .notify-content p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .notify-content small {
+            color: #666;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .no-notify {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .back-link {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            color: #d4a017;
+            text-decoration: none;
+            padding: 12px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #d4a017;
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .day-card { width: 100%; left: 0 !important; }
+            .timeline::after { left: 20px; }
+            .day-card::after { left: -10px !important; right: auto !important; }
+            .buddy-grid { grid-template-columns: 1fr; }
+            .table { font-size: 0.9rem; }
+            .notify-item { flex-direction: column; align-items: flex-start; }
+            .notify-avatar { margin-bottom: 10px; }
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> <!-- Replace with your FontAwesome kit -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                duration: 800,
+                once: true,
+            });
+        });
+    </script>
+{% endblock %}

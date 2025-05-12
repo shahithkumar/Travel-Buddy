@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        select,
+        input[type="checkbox"],
+        button {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Travel Destination Recommendation</h1>
+
+    <form action="{{ url_for('recommend') }}" method="POST">
+        <label for="destination_type">Destination Type:</label>
+        <select name="destination_type" required>
+            <option value="Mountain">Mountain</option>
+            <option value="Beach">Beach</option>
+            <option value="Spiritual">Spiritual</option>
+            <option value="Cultural">Cultural</option>
+            <option value="Heritage">Heritage</option>
+            <option value="Hill Station">Hill Station</option>
+            <option value="Backwaters">Backwaters</option>
+            <option value="Wildlife">Wildlife</option>
+            <option value="Urban">Urban</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Desert">Desert</option>
+            <option value="Tribal">Tribal</option>
+        </select><br>
+
+        <label for="budget">Budget:</label>
+        <select name="budget" required>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select><br>
+
+        <label for="travel_time">Travel Time:</label>
+        <select name="travel_time" required>
+            <option value="Winter">Winter</option>
+            <option value="Summer">Summer</option>
+        </select><br>
+
+        <label for="duration">Duration (4-7 Days):</label>
+        <select name="duration" required>
+            <option value="4-7 Days">4-7 Days</option>
+        </select><br>
+
+        <label for="trekking">Trekking</label>
+        <input type="checkbox" name="activities" value="Trekking"><br>
+
+        <label for="skiing">Skiing</label>
+        <input type="checkbox" name="activities" value="Skiing"><br>
+
+        <label for="water-sports">Water Sports</label>
+        <input type="checkbox" name="activities" value="Water Sports"><br>
+
+        <label for="trekking-monasteries">Trekking, Monasteries</label>
+        <input type="checkbox" name="activities" value="Trekking, Monasteries"><br>
+
+        <label for="yoga-rafting">Yoga, Rafting</label>
+        <input type="checkbox" name="activities" value="Yoga, Rafting"><br>
+
+        <label for="backwater-tours">Backwater Tours</label>
+        <input type="checkbox" name="activities" value="Backwater Tours"><br>
+
+        <label for="heritage-tours">Heritage Tours</label>
+        <input type="checkbox" name="activities" value="Heritage Tours"><br>
+
+        <label for="tea-gardens">Tea Gardens</label>
+        <input type="checkbox" name="activities" value="Tea Gardens"><br>
+
+        <label for="nature-walks">Nature Walks</label>
+        <input type="checkbox" name="activities" value="Nature Walks"><br>
+
+        <label for="taj-mahal">Taj Mahal</label>
+        <input type="checkbox" name="activities" value="Taj Mahal"><br>
+
+        <label for="pilgrimage">Pilgrimage</label>
+        <input type="checkbox" name="activities" value="Pilgrimage"><br>
+
+        <label for="houseboat-ride">Houseboat Ride</label>
+        <input type="checkbox" name="activities" value="Houseboat Ride"><br>
+
+        <label for="safari">Safari</label>
+        <input type="checkbox" name="activities" value="Safari"><br>
+
+        <label for="shopping-heritage">Shopping, Heritage</label>
+        <input type="checkbox" name="activities" value="Shopping, Heritage"><br>
+
+        <label for="beaches-shopping">Beaches, Shopping</label>
+        <input type="checkbox" name="activities" value="Beaches, Shopping"><br>
+
+        <label for="shopping-sightseeing">Shopping, Sightseeing</label>
+        <input type="checkbox" name="activities" value="Shopping, Sightseeing"><br>
+
+        <label for="trekking-pilgrimage">Trekking, Pilgrimage</label>
+        <input type="checkbox" name="activities" value="Trekking, Pilgrimage"><br>
+
+        <label for="river-rafting-yoga">River Rafting, Yoga</label>
+        <input type="checkbox" name="activities" value="River Rafting, Yoga"><br>
+
+        <label for="camel-safari">Camel Safari</label>
+        <input type="checkbox" name="activities" value="Camel Safari"><br>
+
+        <label for="boating-hiking">Boating, Hiking</label>
+        <input type="checkbox" name="activities" value="Boating, Hiking"><br>
+
+        <label for="wildlife-safari">Wildlife Safari</label>
+        <input type="checkbox" name="activities" value="Wildlife Safari"><br>
+
+        <label for="coffee-plantations">Coffee Plantations</label>
+        <input type="checkbox" name="activities" value="Coffee Plantations"><br>
+        <label for="goal">Main Goal</label>
+        <select name="goal" id="goal">
+            <option value="Adventure">Adventure</option>
+            <option value="Relaxation">Relaxation</option>
+            <option value="Spiritual Growth">Spiritual Growth</option>
+            <option value="Exploration">Exploration</option>
+            <option value="Pilgrimage">Pilgrimage</option>
+        </select><br>
+
+        <label for="environment">Environment:</label>
+        <select name="environment" required>
+            <option value="Active">Active</option>
+            <option value="Peaceful">Peaceful</option>
+        </select><br>
+
+        <label for="weather">Weather:</label>
+        <select name="weather" required>
+            <option value="Cold">Cold</option>
+            <option value="Tropical">Tropical</option>
+            <option value="Temperate">Temperate</option>
+            <option value="Mild">Mild</option>
+            <option value="Dry">Dry</option>
+        </select><br>
+
+        <label for="food_preferences">Food Preferences:</label>
+        <select name="food_preferences" required>
+            <option value="North Indian">North Indian</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Spicy">Spicy</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Street Food">Street Food</option>
+            <option value="South Indian">South Indian</option>
+        </select><br>
+
+        <label for="region">Region:</label>
+        <select name="region" required>
+            <option value="North">North</option>
+            <option value="West">West</option>
+            <option value="South">South</option>
+            <option value="East">East</option>
+            <option value="Northeast">Northeast</option>
+            <option value="Central India">Central India</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Himalayan Region">Himalayan Region</option>
+        </select><br>
+
+        <button type="submit">Get Recommendation</button>
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - My Flask App{% endblock %}
+
+
+{% block content %}
+<div class="mt-5">
+
+</div>
+<form action="{{ url_for('recommend') }}" method="POST">
+
+        <!-- Destination Type -->
+        <div class="form-group">
+            <label for="destination_type">Destination Type:</label>
+            <select name="destination_type" class="form-control" required>
+                <option value="Mountain">Mountain</option>
+                <option value="Beach">Beach</option>
+                <option value="Spiritual">Spiritual</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Heritage">Heritage</option>
+                <option value="Hill Station">Hill Station</option>
+                <option value="Backwaters">Backwaters</option>
+                <option value="Wildlife">Wildlife</option>
+                <option value="Urban">Urban</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Desert">Desert</option>
+                <option value="Tribal">Tribal</option>
+            </select>
+        </div>
+
+        <!-- Budget -->
+        <div class="form-group">
+            <label for="budget">Budget:</label>
+            <select name="budget" class="form-control" required>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+        </div>
+
+        <!-- Travel Time -->
+        <div class="form-group">
+            <label for="travel_time">Travel Time:</label>
+            <select name="travel_time" class="form-control" required>
+                <option value="Winter">Winter</option>
+                <option value="Summer">Summer</option>
+            </select>
+        </div>
+
+        <!-- Duration -->
+        <div class="form-group">
+            <label for="duration">Duration (4-7 Days):</label>
+            <select name="duration" class="form-control" required>
+                <option value="4-7 Days">4-7 Days</option>
+            </select>
+        </div>
+
+        <!-- Activities Checkboxes -->
+        <div class="form-group">
+            <label>Activities:</label><br>
+            <label><input type="checkbox" name="activities" value="Trekking"> Trekking</label><br>
+            <label><input type="checkbox" name="activities" value="Skiing"> Skiing</label><br>
+            <label><input type="checkbox" name="activities" value="Rafting"> Rafting</label><br>
+            <label><input type="checkbox" name="activities" value="Hiking"> Hiking</label><br>
+            <label><input type="checkbox" name="activities" value="Camel Safari"> Camel Safari</label><br>
+            <label><input type="checkbox" name="activities" value="Wildlife Safari"> Wildlife Safari</label><br>
+            <label><input type="checkbox" name="activities" value="Camel Ride"> Camel Ride</label><br>
+            <label><input type="checkbox" name="activities" value="Camping"> Camping</label><br>
+            <label><input type="checkbox" name="activities" value="Water Sports"> Water Sports</label><br>
+            <label><input type="checkbox" name="activities" value="Houseboat Ride"> Houseboat Ride</label><br>
+            <label><input type="checkbox" name="activities" value="Backwater Tours"> Backwater Tours</label><br>
+            <label><input type="checkbox" name="activities" value="Monasteries"> Monasteries</label><br>
+            <label><input type="checkbox" name="activities" value="Heritage Tours"> Heritage Tours</label><br>
+            <label><input type="checkbox" name="activities" value="Tea Gardens"> Tea Gardens</label><br>
+            <label><input type="checkbox" name="activities" value="Pilgrimage"> Pilgrimage</label><br>
+            <label><input type="checkbox" name="activities" value="Taj Mahal"> Taj Mahal</label><br>
+            <label><input type="checkbox" name="activities" value="Cultural Exploration"> Cultural Exploration</label><br>
+            <label><input type="checkbox" name="activities" value="Shopping"> Shopping</label><br>
+            <label><input type="checkbox" name="activities" value="Yoga"> Yoga</label><br>
+            <label><input type="checkbox" name="activities" value="Nature Walks"> Nature Walks</label><br>
+            <label><input type="checkbox" name="activities" value="Coffee Plantations"> Coffee Plantations</label><br>
+            <label><input type="checkbox" name="activities" value="River Rafting"> River Rafting</label><br>
+            <label><input type="checkbox" name="activities" value="Sightseeing"> Sightseeing</label><br>
+            <label><input type="checkbox" name="activities" value="Boating"> Boating</label><br>
+        </div>
+
+        <!-- Main Goal -->
+        <div class="form-group">
+            <label for="goal">Main Goal:</label>
+            <select name="goal" class="form-control" id="goal">
+                <option value="Adventure">Adventure</option>
+                <option value="Relaxation">Relaxation</option>
+                <option value="Spiritual Growth">Spiritual Growth</option>
+                <option value="Exploration">Exploration</option>
+                <option value="Pilgrimage">Pilgrimage</option>
+            </select>
+        </div>
+
+        <!-- Environment -->
+        <div class="form-group">
+            <label for="environment">Environment:</label>
+            <select name="environment" class="form-control" required>
+                <option value="Active">Active</option>
+                <option value="Peaceful">Peaceful</option>
+            </select>
+        </div>
+
+        <!-- Weather -->
+        <div class="form-group">
+            <label for="weather">Weather:</label>
+            <select name="weather" class="form-control" required>
+                <option value="Cold">Cold</option>
+                <option value="Tropical">Tropical</option>
+                <option value="Temperate">Temperate</option>
+                <option value="Mild">Mild</option>
+                <option value="Dry">Dry</option>
+            </select>
+        </div>
+
+        <!-- Food Preferences -->
+        <div class="form-group">
+            <label for="food_preferences">Food Preferences:</label>
+            <select name="food_preferences" class="form-control" required>
+                <option value="North Indian">North Indian</option>
+                <option value="Seafood">Seafood</option>
+                <option value="Spicy">Spicy</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Street Food">Street Food</option>
+                <option value="South Indian">South Indian</option>
+            </select>
+        </div>
+
+        <!-- Region -->
+        <div class="form-group">
+            <label for="region">Region:</label>
+            <select name="region" class="form-control" required>
+                <option value="North">North</option>
+                <option value="West">West</option>
+                <option value="South">South</option>
+                <option value="East">East</option>
+                <option value="Northeast">Northeast</option>
+                <option value="Central India">Central India</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Himalayan Region">Himalayan Region</option>
+            </select>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100">Get Recommendation</button>
+        </div>
+    </form>
+   
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+   
+
+{% endblock %}
+

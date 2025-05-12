@@ -1,0 +1,36 @@
+/* static/css/style2.css */
+
+/* No changes to :root or body - already matches */
+
+/* Navbar - Already matches your original, no changes needed */
+
+/* Main Content - Already matches */
+
+/* Footer - Adjusted to match original homee.html footer */
+.footer {
+    background-color: var(--dark-color);
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: auto;
+    border-top: 3px solid var(--secondary-color);
+    animation: slideUp 1s ease-out;
+}
+
+.footer a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #ffffff;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/* Removed multi-footer since your original used single footer */
