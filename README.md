@@ -33,6 +33,3 @@
 
 ---
 
-## 🛠️ Getting Started
-
-1. Clone this repository  
