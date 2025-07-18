@@ -29,7 +29,6 @@
 - **Python**
 - **Flask**
 - **HTML/CSS**
-- *(Optional)* SQLite / Pandas for data handling
-
+- **SQLite / Pandas for data handling**
 ---
 
